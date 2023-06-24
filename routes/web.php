@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// // closure
 Route::get('/', function () {
     // blade es el     template engine     de laravel
     return view('home'); // /resources/views/file.blade.php <- renderiza la view
 });
+
+
+// // controller
+Route::get('/signup', [RegisterController::class, 'index']); // [class controller, method]
 
