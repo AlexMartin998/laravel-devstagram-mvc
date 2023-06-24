@@ -18,10 +18,3 @@ Route::get('/', function () {
     return view('home'); // /resources/views/file.blade.php <- renderiza la view
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
