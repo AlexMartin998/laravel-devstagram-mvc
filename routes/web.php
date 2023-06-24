@@ -22,5 +22,6 @@ Route::get('/', function () {
 
 
 // // controller
-Route::get('/signup', [RegisterController::class, 'index']); // [class controller, method]
+Route::get('/register', [RegisterController::class, 'index'])->name('register'); // [class controller, method] ->name('name') <- tomarlo en la view y asi tenerlo dinamico
+Route::post('/register', [RegisterController::class, 'store']);
 
