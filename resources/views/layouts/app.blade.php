@@ -29,7 +29,7 @@
         @yield('content')
     </main>
 
-    <footer class="text-center p-5 text-gray-500 font-bold">
+    <footer class="text-center p-5 text-gray-500 font-bold mt-10">
         &copy; {{ now()->year }} DevStagram - All rights reserved
     </footer>
 </body>
