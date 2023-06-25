@@ -40,6 +40,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 // x default va a tomar el id para el path, pero asi podemos referirnos a cualquier column de la tabla asociada al model - ahora init() espera 1 User
 Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 
 // // images

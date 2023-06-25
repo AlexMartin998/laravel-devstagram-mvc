@@ -20,9 +20,19 @@ class PostController extends Controller
         ]);
     }
 
-    // create para forms de creacion
-    public function create(Request $request)
+    // create para forms de creacion - GET
+    public function create()
     {
         return view('posts.create');
+    }
+
+    // atiende a POST y store in DB
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'required'
+        ]);
     }
 }
