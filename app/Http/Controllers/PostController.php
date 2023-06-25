@@ -19,4 +19,10 @@ class PostController extends Controller
             'user' => $user,
         ]);
     }
+
+    // create para forms de creacion
+    public function create(Request $request)
+    {
+        return view('posts.create');
+    }
 }
