@@ -35,5 +35,6 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 
-
-Route::get('/muro', [PostController::class, 'init'])->name('posts.index');
+// // route model binding: path dinamico relacionado a 1 Model 
+// x default va a tomar el id para el path, pero asi podemos referirnos a cualquier column de la tabla asociada al model - ahora init() espera 1 User
+Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');

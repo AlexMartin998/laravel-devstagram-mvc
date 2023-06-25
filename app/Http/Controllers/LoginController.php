@@ -24,6 +24,8 @@ class LoginController extends Controller
             return back()->with('message', 'Incorrect Credentials'); // back a la prev page
         }
 
-        return redirect()->route('posts.index');
+
+        // x el route model binding necesita el username para la url
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
