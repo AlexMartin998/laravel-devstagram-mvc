@@ -16,8 +16,11 @@ class PostController extends Controller
     // espera el User x el route model binding
     public function init(User $user)
     {
+        $posts = Post::where('user_id', $user->id);
+
         return view('dashboard', [
             'user' => $user,
+            'posts' => $posts,
         ]);
     }
 
