@@ -10,3 +10,11 @@ const dropzone = new Dropzone("#dropzone", {
     maxFiles: 1,
     uploadMultiple: false,
 });
+
+dropzone.on("sending", (file, xhr, formData) => {
+	
+});
+
+dropzone.on('success', (file, response) => {
+	
+});
