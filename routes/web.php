@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -46,3 +47,8 @@ Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->na
 
 // // images
 Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+
+
+// // comments
+Route::post('/{user:username}/posts/{post}', [CommentController::class, 'store'])->name('comments.store');
+
