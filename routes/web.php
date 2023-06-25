@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
@@ -39,3 +40,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 // x default va a tomar el id para el path, pero asi podemos referirnos a cualquier column de la tabla asociada al model - ahora init() espera 1 User
 Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+
+// // images
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');

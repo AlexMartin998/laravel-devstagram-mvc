@@ -5,9 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {{-- space for styles files --}}
+    @stack('styles')
+
     <title>@yield('title') | DevsTagram</title>
 
-    <!-- aplica tailwind -->
+    <!-- aplica tailwind y otros files -->
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
