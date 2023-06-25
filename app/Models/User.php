@@ -43,4 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts()
+    {
+        // x usar la convencion, Laravel sabe la FK y no hace falta especificarle
+        return $this->hasMany(Post::class); // OneToMany
+    }
 }

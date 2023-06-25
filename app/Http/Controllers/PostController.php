@@ -37,15 +37,15 @@ class PostController extends Controller
         ]);
 
         // // insert record in db
-        // 1)
-        Post::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'image' => $request->image,
-            'user_id' => auth()->user()->id,
-        ]);
+        // 1) Normal way
+        // Post::create([
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'image' => $request->image,
+        //     'user_id' => auth()->user()->id,
+        // ]);
 
-        // 2)
+        // 2) long way
         // $post = new Post();
         // $post->title = $request->title;
         // $post->description = $request->description;
@@ -53,6 +53,13 @@ class PostController extends Controller
         // $post->user_id = auth()->user()->id;
         // $post->save();
 
+        // 3) Laravel way <- relations between tables | with it we don't need where sql statements in sql queries
+        $request->user()->posts()->create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $request->image,
+            'user_id' => auth()->user()->id,
+        ]);
 
 
         return redirect()->route('posts.index', auth()->user()->username);

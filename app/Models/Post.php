@@ -20,4 +20,13 @@ class Post extends Model
         'image',
         'user_id',  // lo agregamos manualmente tras run la migration q agrega esta colum
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->select([
+            'name',
+            'username'
+        ]); // ManyToOne
+    }
 }
