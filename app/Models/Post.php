@@ -29,4 +29,10 @@ class Post extends Model
             'username'
         ]); // ManyToOne
     }
+
+    // gracias a estas Asociaciones, Laravel nos implementa todo para acceder a los comments de este post. Sin tener que hacer where, Join, etc de sql. Todo esto laravel ya lo hace behind the scenes 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class); // OneToMany
+    }
 }
