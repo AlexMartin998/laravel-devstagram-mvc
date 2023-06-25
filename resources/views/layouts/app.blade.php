@@ -16,10 +16,26 @@
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-3xl font-black">DevStagram</h1>
 
-            <nav class="flex gap-3 items-center">
-                <a class="font-bold uppercase text-gray-600 text-sm" href="/login">Login</a>
-                <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">Sign Up</a>
-            </nav>
+            @auth
+                <nav class="flex gap-5 items-center">
+                    <a href="#">Hi:
+                        <span class="font-normal text-gray-600 text-sm">
+                            {{ auth()->user()->username }}
+                        </span>
+                    </a>
+                    <a href="{{ route('login') }}" class="font-bold uppercase text-gray-600 text-sm">
+                        Log Out
+                    </a>
+                </nav>
+            @endauth
+
+            @guest
+                <nav class="flex gap-3 items-center">
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="/login">Login</a>
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">Sign Up</a>
+                </nav>
+            @endguest
+
         </div>
     </header>
 
