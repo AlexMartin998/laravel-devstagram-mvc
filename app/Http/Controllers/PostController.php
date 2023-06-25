@@ -16,11 +16,13 @@ class PostController extends Controller
     // espera el User x el route model binding
     public function init(User $user)
     {
-        $posts = Post::where('user_id', $user->id);
+        // solo estas queries pueden ser paginables asi de facil
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(20);
 
         return view('dashboard', [
             'user' => $user,
             'posts' => $posts,
+            // 'posts' => $user->posts, // <- collections/relations - NO pagining
         ]);
     }
 
