@@ -23,15 +23,20 @@
                             {{ auth()->user()->username }}
                         </span>
                     </a>
-                    <a href="{{ route('login') }}" class="font-bold uppercase text-gray-600 text-sm">
-                        Log Out
-                    </a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" href="{{ route('logout') }}"
+                            class="font-bold uppercase text-gray-600 text-sm">
+                            Log Out
+                        </button>
+                    </form>
+
                 </nav>
             @endauth
 
             @guest
                 <nav class="flex gap-3 items-center">
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="/login">Login</a>
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('login') }}">Login</a>
                     <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">Sign Up</a>
                 </nav>
             @endguest
