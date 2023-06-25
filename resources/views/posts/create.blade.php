@@ -8,7 +8,10 @@
 @section('content')
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
-            Image
+            <form action="/ss1" method="POST" enctype="multipart/form-data" id="dropzone"
+                class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+                @csrf
+            </form>
         </div>
 
         <div class="md:w-1/2 md:flex md:items-center md:justify-center mt-10 md:mt-0">
@@ -30,14 +33,10 @@
                 </div>
                 <div class="mb-5">
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
-                           Descripción
+                        Descripción
                     </label>
-                    <textarea 
-                        id="descripcion"
-                        name="descripcion"
-                        placeholder="Post description"
-                        class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
-                    >{{ old('descripcion') }}</textarea>
+                    <textarea id="descripcion" name="descripcion" placeholder="Post description"
+                        class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
 
                     @error('descripcion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }} </p>
