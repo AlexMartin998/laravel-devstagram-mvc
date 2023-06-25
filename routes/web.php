@@ -29,7 +29,7 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/login', [LoginController::class, 'init'])->name('login');
-
+Route::post('/login', [LoginController::class, 'store'])->name('login');
 
 
 Route::get('/muro', [PostController::class, 'init'])->name('posts.index');
