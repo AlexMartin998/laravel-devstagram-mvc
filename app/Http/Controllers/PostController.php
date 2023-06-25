@@ -58,7 +58,7 @@ class PostController extends Controller
         // $post->user_id = auth()->user()->id;
         // $post->save();
 
-        // 3) Laravel way <- relations between tables | with it we don't need where sql statements in sql queries
+        // 3) Laravel way <- relations between tables | with it we don't need where sql statements in sql queries - but i lose pagining
         $request->user()->posts()->create([
             'title' => $request->title,
             'description' => $request->description,
@@ -68,5 +68,12 @@ class PostController extends Controller
 
 
         return redirect()->route('posts.index', auth()->user()->username);
+    }
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post,
+        ]);
     }
 }
