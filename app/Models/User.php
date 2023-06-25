@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',  // lo agregamos manualmente tras run la migration q agrega esta colum
     ];
 
     /**
