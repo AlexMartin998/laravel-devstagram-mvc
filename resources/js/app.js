@@ -16,5 +16,5 @@ dropzone.on("sending", (file, xhr, formData) => {
 });
 
 dropzone.on('success', (file, response) => {
-	
+	console.log(response)
 });
