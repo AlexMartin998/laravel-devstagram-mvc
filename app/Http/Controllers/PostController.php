@@ -10,7 +10,8 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth'); // all methods and their urls
+        $this->middleware('auth')->except(['show', 'init']);
     }
 
     // espera el User x el route model binding
