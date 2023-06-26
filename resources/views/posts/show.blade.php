@@ -22,6 +22,21 @@
                 </p>
                 <p class="mt-5">{{ $post->description }}</p>
             </div>
+
+
+            {{-- it can only be deleted by its creator | delete is an spoofing method --}}
+            @auth()
+                @if ($post->user_id === auth()->user()->id)
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+
+                        <input type="submit" value="Delete Post"
+                            class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer">
+                    </form>
+                @endif
+            @endauth
+
         </div>
 
         <div class="md:w-1/2 p-5">
