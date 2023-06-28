@@ -44,9 +44,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // // Relations
     public function posts()
     {
         // x usar la convencion, Laravel sabe la FK y no hace falta especificarle
         return $this->hasMany(Post::class); // OneToMany
+    }
+
+    // likes
+    public function likes()
+    {
+        return $this->hasMany(Like::class); // OneToMany
     }
 }

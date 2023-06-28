@@ -16,4 +16,12 @@ class LikeController extends Controller
 
         return back();  // solo es like, retorna de nuevo a la misma url
     }
+
+    public function destroy(Request $request, Post $post)
+    {
+        // Gracias a las relaciones de laravel ya tiene el user_id del user x el likes() en el User model, solo falta el post_id
+        $request->user()->likes()->where('post_id', $post->id)->delete();
+
+        return back();
+    }
 }
