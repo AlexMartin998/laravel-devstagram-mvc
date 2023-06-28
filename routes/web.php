@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -40,7 +41,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 // // route model binding: path dinamico relacionado a 1 Model 
 // x default va a tomar el id para el path, pero asi podemos referirnos a cualquier column de la tabla asociada al model - ahora init() espera 1 User
-Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');
+// Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index'); // al final
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name('posts.show'); // show: render record view
@@ -57,3 +58,13 @@ Route::post('/{user:username}/posts/{post}', [CommentController::class, 'store']
 // like photos
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
+
+
+
+// // Profile
+Route::get('/edit-profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
+
+
+// al final xq es dinamico, like in react, node, etc - tb podriamos validar x policy
+Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');
