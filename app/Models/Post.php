@@ -35,4 +35,19 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class); // OneToMany
     }
+
+    // likes al post - x estas relaciones ya laravel los asocia directemente x medio de post
+    // $post->likes()->create([]);
+    public function likes()
+    {
+        return $this->hasMany(Like::class); // OneToMany
+    }
+
+    // revisar si ya le ha dado like
+    public function checkLike(User $user)
+    {
+        // se pocisiona en la tabla de likes, y check si la tabla contiene en la columna user_id ese value
+            // debido a la relacion y al modelo asociado a la migracion y al controller, se situa de inmediato en la tabla de likes y el contains verifica en cualquiera de la tabla 
+        return $this->likes->contains('user_id', $user->id);
+    }
 }
