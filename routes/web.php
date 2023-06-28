@@ -52,3 +52,5 @@ Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 
 // // comments
 Route::post('/{user:username}/posts/{post}', [CommentController::class, 'store'])->name('comments.store');
+
+
