@@ -9,7 +9,8 @@
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:w-6/12 px-5">
-                <img src="{{ asset('img/user.svg') }}" alt="User defaul image">
+                <img src="{{ $user->image ? asset('profiles' . '/' . $user->image) : asset('img/user.svg') }}"
+                    alt="User default image" class="rounded-full h-full w-full object-cover">
             </div>
 
             <div class="md:w-8/12 lg:w-6/12 px-5 flex flex-col items-center md:justify-center md:items-start py-10 md:py-10">
@@ -38,7 +39,8 @@
                     <span class="font-normal">Following</span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    1
+                    {{-- post quantity --}}
+                    {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>
                 </p>
             </div>
