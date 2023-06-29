@@ -9,5 +9,5 @@
 
 
 @section('content')
-    Home Content
+
 @endsection

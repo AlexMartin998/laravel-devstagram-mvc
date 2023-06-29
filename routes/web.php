@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
@@ -23,10 +24,12 @@ use App\Http\Controllers\RegisterController;
 */
 
 // // closure
-Route::get('/', function () {
-    // blade es el     template engine     de laravel
-    return view('home'); // /resources/views/file.blade.php <- renderiza la view
-});
+// Route::get('/', function () {
+//     // blade es el     template engine     de laravel
+//     return view('home'); // /resources/views/file.blade.php <- renderiza la view
+// });
+
+Route::get('/', HomeController::class)->name('home');
 
 
 
