@@ -64,6 +64,14 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');  // ManyToMany - pivot table
     }
 
+    // persist follogins: solo se invierte el orden de las columnas xq mientras mi id este al lado izquiero significa q me estan siguiendo, pero cuando mi id esta a la derecha en follower_id, significa q yo soy el follower y estoy siguiendo a otras personas
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');  // ManyToMany - pivot table
+    }
+
+    // // another methods
+
     // check if a user is already following another user
     public function isFollowingByUser(User $user)
     {
