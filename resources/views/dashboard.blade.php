@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+{{-- 
+    $user here is the owner of the profile we are visiting at the moment
+--}}
+
 @section('title')
     Profile: {{ $user->username }}
 @endsection
@@ -45,21 +49,25 @@
                 </p>
 
                 @auth
-                    {{-- do not follow yourself --}}
+                    {{-- Not following oneself --}}
                     @if ($user->id !== auth()->user()->id)
-                        <form action="{{ route('users.follow', $user) }}" method="POST">
-                            @csrf
-                            <input type="submit"
-                                class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
-                                value="Follow">
-                        </form>
-
-                        <form action="" method="POST">
-                            @csrf
-                            <input type="submit"
-                                class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
-                                value="Unfollow">
-                        </form>
+                        @if (!$user->isFollowingByUser(auth()->user()))
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+                                <input type="submit"
+                                    class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    value="Follow">
+                            </form>
+                        @else
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                                @csrf
+                                {{-- spoofing method to add more http verboses --}}
+                                @method('DELETE')
+                                <input type="submit"
+                                    class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    value="Unfollow">
+                            </form>
+                        @endif
                     @endif
                 @endauth
 

@@ -62,6 +62,11 @@ class User extends Authenticatable
     {
         // Model, table, FK, FK  <--  2 FK 'cause this is a pivot table
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');  // ManyToMany - pivot table
+    }
 
+    // check if a user is already following another user
+    public function isFollowingByUser(User $user)
+    {
+        return $this->followers->contains($user->id);
     }
 }

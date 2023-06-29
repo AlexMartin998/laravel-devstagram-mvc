@@ -19,6 +19,13 @@ class FollowerController extends Controller
         // // ManyToMany: attach 'cause we don't follow conventions for this table. Both of them belongs to the same table/model
         $user->followers()->attach(auth()->user()->id);
 
-        return back();  
+        return back();
+    }
+
+    public function destroy(User $user)
+    {
+        $user->followers()->detach(auth()->user()->id);
+
+        return back();
     }
 }
