@@ -56,4 +56,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class); // OneToMany
     }
+
+    // persist followers
+    public function followers()
+    {
+        // Model, table, FK, FK  <--  2 FK 'cause this is a pivot table
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');  // ManyToMany - pivot table
+
+    }
 }

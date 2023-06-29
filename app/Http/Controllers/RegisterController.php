@@ -50,6 +50,6 @@ class RegisterController extends Controller
 
 
         // redirect to another page
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', auth()->user());
     }
 }

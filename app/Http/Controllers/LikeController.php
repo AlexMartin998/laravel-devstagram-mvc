@@ -9,7 +9,7 @@ class LikeController extends Controller
 {
     public function store(Request $request, Post $post)
     {
-        // x relaciones en laravel - no necesito especificar el post_id xq parto de esa instancia
+        // x relaciones en laravel - no necesito especificar el post_id xq parto de esa instancia <- Relacion ManyToMany, como seguimos las convenciones NO necesitamos attach() xq aqui son MODELOS/TABLAS Distintas
         $post->likes()->create([
             'user_id' => $request->user()->id,  // auth() user de la request
         ]);

@@ -67,11 +67,13 @@ Route::get('/edit-profile', [ProfileController::class, 'index'])->name('profile.
 Route::post('/edit-profile', [ProfileController::class, 'store'])->name('profile.store');
 
 
-// al final xq es dinamico, like in react, node, etc - tb podriamos validar x policy
-Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');
-
-
 
 // // following users
-Route::post('/{user:username}/follow', [FollowerController::class, 'index'])->name('users.follow');
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
 Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
+
+
+
+
+// al final xq es dinamico, like in react, node, etc - tb podriamos validar x policy
+Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');
