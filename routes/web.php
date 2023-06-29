@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
@@ -68,3 +69,9 @@ Route::post('/edit-profile', [ProfileController::class, 'store'])->name('profile
 
 // al final xq es dinamico, like in react, node, etc - tb podriamos validar x policy
 Route::get('/{user:username}', [PostController::class, 'init'])->name('posts.index');
+
+
+
+// // following users
+Route::post('/{user:username}/follow', [FollowerController::class, 'index'])->name('users.follow');
+Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
