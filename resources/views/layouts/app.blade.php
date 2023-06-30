@@ -13,6 +13,9 @@
     <!-- aplica tailwind y otros files -->
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+
+    {{-- Livewire --}}
+    @livewireStyles
 </head>
 
 <body class="bg-gray-100">
@@ -70,6 +73,8 @@
     <footer class="mt-10 text-center p-5 text-gray-500 font-bold uppercase">
         &copy; {{ now()->year }} DevStagram - All rights reserved
     </footer>
+
+    @livewireScripts
 </body>
 
 </html>
